@@ -2,7 +2,6 @@ import jwt, { JwtPayload } from "jsonwebtoken";
 
 import Account from "../models/account";
 
-import * as ACCESS_LINK from "../constants/access_link";
 import * as API_LINK from "../constants/api_link";
 
 const ACCESS_TOKEN_SECRET = process.env.ACCESS_TOKEN_SECRET || "secret";

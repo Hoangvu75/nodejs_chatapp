@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import * as ACCESS_LINK from "./constants/access_link";
 import { getAccountData, loginAccount, registerAccount } from "./controllers/account";
+import { addAccountProfile, getAccountProfile } from "./controllers/profile";
 
 const app = express();
 app.use(express.json());
@@ -25,16 +26,23 @@ function setup_database_connection() {
 
 function setup_get_request() {
   app.get("/", function (_req: any, res: any) {
-    res.status(200).send("Hello world 2!");
+    res.status(200).send("Hello world!");
   });
 
+  // account
   getAccountData(app);
+
+  // profile
+  getAccountProfile(app);
 }
 
 function setup_post_request() {
+  // account
   registerAccount(app);
-
   loginAccount(app);
+
+  // profile
+  addAccountProfile(app);
 }
 
 async function main() {
