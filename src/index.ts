@@ -25,7 +25,7 @@ function setup_database_connection() {
 
 function setup_get_request() {
   app.get("/", function (_req: any, res: any) {
-    res.status(200).send("Hello world!");
+    res.status(200).send("Hello world 2!");
   });
 
   getAccountData(app);
