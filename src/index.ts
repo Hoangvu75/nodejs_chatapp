@@ -13,8 +13,9 @@ import * as http from "http";
 const app = express();
 app.use(express.json());
 
+const PORT = process.env.PORT || 3000;
+
 function initate_server() {
-  const PORT = process.env.PORT || 3000;
   app.listen(PORT, () => {
     console.log(`Listening to server: ${PORT}\nConnecting to the database...`);
   });
@@ -28,7 +29,7 @@ function setup_database_connection() {
       throw err;
     } else {
       setInterval(() => {
-        http.get("http://chatapp-server-hv357.onrender.com/", (response) => {
+        http.get(`http://localhost:${PORT}/`, (response) => {
           console.log(response.statusCode);
         });
       }, 10 * 60 * 1000);
