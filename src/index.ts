@@ -8,7 +8,6 @@ import {
 } from "./controllers/account";
 import { generateOtpCode } from "./controllers/generate_otp";
 import { addAccountProfile, getAccountProfile } from "./controllers/profile";
-import * as http from "http";
 
 const app = express();
 app.use(express.json());
@@ -27,12 +26,6 @@ function setup_database_connection() {
     if (err) {
       console.log("Connection error");
       throw err;
-    } else {
-      setInterval(() => {
-        http.get(`http://localhost:${PORT}/`, (response) => {
-          console.log(response.statusCode);
-        });
-      }, 10 * 60 * 1000);
     }
   });
 }
