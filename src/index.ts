@@ -1,9 +1,14 @@
 import express from "express";
 import mongoose from "mongoose";
 import * as ACCESS_LINK from "./constants/access_link";
-import { getAccountData, loginAccount, registerAccount } from "./controllers/account";
+import {
+  getAccountData,
+  loginAccount,
+  registerAccount,
+} from "./controllers/account";
 import { generateOtpCode } from "./controllers/generate_otp";
 import { addAccountProfile, getAccountProfile } from "./controllers/profile";
+import * as http from "http";
 
 const app = express();
 app.use(express.json());
@@ -21,13 +26,19 @@ function setup_database_connection() {
     if (err) {
       console.log("Connection error");
       throw err;
+    } else {
+      setInterval(() => {
+        http.get("http://chatapp-server-hv357.onrender.com/", (response) => {
+          console.log(response.statusCode);
+        });
+      }, 10 * 60 * 1000);
     }
   });
 }
 
 function setup_get_request() {
   app.get("/", function (_req: any, res: any) {
-    res.status(200).send("Hello world!");
+    res.status(200).send({ response: "Hello world!" });
   });
 
   // account
@@ -54,6 +65,5 @@ async function main() {
   setup_database_connection();
   setup_get_request();
   setup_post_request();
-  //
 }
 main();
