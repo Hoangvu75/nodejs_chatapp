@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import * as ACCESS_LINK from "./constants/access_link";
 import { getAccountData, loginAccount, registerAccount } from "./controllers/account";
+import { generateOtpCode } from "./controllers/generate_otp";
 import { addAccountProfile, getAccountProfile } from "./controllers/profile";
 
 const app = express();
@@ -43,6 +44,9 @@ function setup_post_request() {
 
   // profile
   addAccountProfile(app);
+
+  // otp_code
+  generateOtpCode(app);
 }
 
 async function main() {
