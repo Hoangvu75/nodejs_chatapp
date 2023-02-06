@@ -82,3 +82,29 @@ export function addChat(app: any) {
     });
   });
 }
+
+export function getChatBoxList(app: any) {
+  app.get(API_LINK.LINK_GET_CHATBOX_LIST, function (req: any, res: any) {
+    var user = req.body.user;
+
+    Chatbox.find({ user: user }, function (err: any, chatboxList: any) {
+      if (err) {
+        return res.status(500).send({
+          success: false,
+          message: `${err}`,
+        });
+      }
+      if (!chatboxList) {
+        return res.status(404).send({
+          success: false,
+          message: "Chat not found.",
+        });
+      }
+      // Return the user data in the response
+      res.status(200).send({
+        success: true,
+        chatboxList,
+      });
+    });
+  });
+}
