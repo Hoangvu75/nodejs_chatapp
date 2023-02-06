@@ -45,7 +45,6 @@ function setup_get_request() {
 
   // chat
   getChatBoxInfo(app);
-  getChatBoxList(app);
 }
 
 function setup_post_request() {
@@ -65,6 +64,7 @@ function setup_post_request() {
   // chat
   createChatBox(app);
   addChat(app);
+  getChatBoxList(app);
 }
 
 async function main() {

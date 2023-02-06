@@ -84,7 +84,7 @@ export function addChat(app: any) {
 }
 
 export function getChatBoxList(app: any) {
-  app.get(API_LINK.LINK_GET_CHATBOX_LIST, function (req: any, res: any) {
+  app.post(API_LINK.LINK_GET_CHATBOX_LIST, function (req: any, res: any) {
     var user = req.body.user;
 
     Chatbox.find({ user: user }, function (err: any, chatboxList: any) {
