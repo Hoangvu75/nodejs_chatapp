@@ -6,7 +6,7 @@ import Account from "../models/account";
 import * as API_LINK from "../constants/api_link";
 
 export function searchPhone(app: any) {
-  app.get(API_LINK.LINK_SEARCH_PHONE, function (req: any, res: any) {
+  app.post(API_LINK.LINK_SEARCH_PHONE, function (req: any, res: any) {
     Account.findOne(
       { username: req.body.phone },
       function (err: any, account: any) {
