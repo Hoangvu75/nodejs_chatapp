@@ -8,6 +8,7 @@ import {
 } from "./controllers/account";
 import { generateOtpCode } from "./controllers/generate_otp";
 import { addAccountProfile, getAccountProfile } from "./controllers/profile";
+import { searchPhone } from "./controllers/search_phone";
 
 const app = express();
 app.use(express.json());
@@ -40,6 +41,9 @@ function setup_get_request() {
 
   // profile
   getAccountProfile(app);
+
+  //search
+  searchPhone(app);
 }
 
 function setup_post_request() {
