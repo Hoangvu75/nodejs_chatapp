@@ -9,3 +9,7 @@ export const LINK_ACCOUNT_ADD_PROFILE = "/account/add-profile";
 export const LINK_ACCOUNT_GET_PROFILE = "/account/get-profile";
 
 export const LINK_SEARCH_PHONE = "/search-phone";
+
+export const LINK_GET_CHATBOX = "/get-chatbox";
+export const LINK_CREATE_CHATBOX = "/create-chatbox";
+export const LINK_ADD_CHAT = "/add-chat";

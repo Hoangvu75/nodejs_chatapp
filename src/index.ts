@@ -6,6 +6,7 @@ import {
   loginAccount,
   registerAccount,
 } from "./controllers/account";
+import { addChat, createChatBox, getChatBoxInfo } from "./controllers/chatbox";
 import { generateOtpCode } from "./controllers/generate_otp";
 import { addAccountProfile, getAccountProfile } from "./controllers/profile";
 import { searchPhone } from "./controllers/search_phone";
@@ -42,8 +43,8 @@ function setup_get_request() {
   // profile
   getAccountProfile(app);
 
-  //search
-  searchPhone(app);
+  // chat
+  getChatBoxInfo(app);
 }
 
 function setup_post_request() {
@@ -56,6 +57,13 @@ function setup_post_request() {
 
   // otp_code
   generateOtpCode(app);
+
+  // search
+  searchPhone(app);
+
+  // chat
+  createChatBox(app);
+  addChat(app);
 }
 
 async function main() {
