@@ -29,7 +29,7 @@ const PORT = process.env.PORT || 3000;
 
 function initate_server() {
   io.on('connection', (socket) => {
-    console.log('a user connected');
+    console.log(`a user connected on ${Date().toLocaleString()}`);
   });
   
   server.listen(PORT, () => {
