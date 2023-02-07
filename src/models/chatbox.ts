@@ -6,10 +6,16 @@ const mChatSchema = new mongoose.Schema({
   time: { type: String, required: true }
 });
 
-export const ChatSchema = mongoose.model("chatSchema", mChatSchema);
+const mProfile = new mongoose.Schema({
+  account_id: { type: String, required: true },
+  phone: { type: String, required: true },
+  name: { type: String, required: true },
+  birthday: { type: String, required: true },
+  avatar: { type: String },
+})
 
 const mChatbox = new mongoose.Schema({
-  user: { type: [String], required: true },
+  user: { type: [mProfile], required: true },
   chat: { type: [mChatSchema], required: true }
 });
 

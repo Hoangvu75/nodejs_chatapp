@@ -8,6 +8,7 @@ const ACCESS_TOKEN_SECRET = process.env.ACCESS_TOKEN_SECRET || "secret";
 
 export function addAccountProfile(app: any) {
   app.post(API_LINK.LINK_ACCOUNT_ADD_PROFILE, async (req: any, res: any) => {
+    var phone = req.body.phone;
     var name = req.body.name;
     var birthday = req.body.birthday;
     var avatar = req.body.avatar;
@@ -17,7 +18,7 @@ export function addAccountProfile(app: any) {
     const payload = decoded as JwtPayload;
     var account_id = payload.id;
 
-    const new_profile = new Profile({ account_id, name, birthday, avatar });
+    const new_profile = new Profile({ account_id, phone, name, birthday, avatar });
     await new_profile.save();
     return res.status(200).send({
       success: true,

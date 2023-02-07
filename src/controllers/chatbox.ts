@@ -1,39 +1,11 @@
-import { Chatbox, ChatSchema } from "../models/chatbox";
+import { Chatbox } from "../models/chatbox";
 
 import * as API_LINK from "../constants/api_link";
-
-export function getChatBoxInfo(app: any) {
-  app.get(API_LINK.LINK_GET_CHATBOX, function (req: any, res: any) {
-    var userArray = [req.body.user1, req.body.user2];
-    userArray.sort();
-
-    Chatbox.findOne({ user: userArray }, function (err: any, chatbox: any) {
-      if (err) {
-        return res.status(500).send({
-          success: false,
-          message: `${err}`,
-        });
-      }
-      if (!chatbox) {
-        return res.status(404).send({
-          success: false,
-          message: "Chat not found.",
-        });
-      }
-      // Return the user data in the response
-      res.status(200).send({
-        success: true,
-        chatbox,
-      });
-    });
-  });
-}
 
 export function createChatBox(app: any) {
   app.post(API_LINK.LINK_CREATE_CHATBOX, function (req: any, res: any) {
     try {
       var userArray = [req.body.user1, req.body.user2];
-      userArray.sort();
 
       const chatbox = new Chatbox({
         user: userArray,
@@ -85,9 +57,9 @@ export function addChat(app: any) {
 
 export function getChatBoxList(app: any) {
   app.post(API_LINK.LINK_GET_CHATBOX_LIST, function (req: any, res: any) {
-    var user = req.body.user;
+    var phone = req.body.phone;
 
-    Chatbox.find({ user: user }, function (err: any, chatboxList: any) {
+    Chatbox.find({ 'user.phone': phone }, function (err: any, chatboxList: any) {
       if (err) {
         return res.status(500).send({
           success: false,

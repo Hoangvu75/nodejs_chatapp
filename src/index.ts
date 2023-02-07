@@ -6,7 +6,11 @@ import {
   loginAccount,
   registerAccount,
 } from "./controllers/account";
-import { addChat, createChatBox, getChatBoxInfo, getChatBoxList } from "./controllers/chatbox";
+import {
+  addChat,
+  createChatBox,
+  getChatBoxList,
+} from "./controllers/chatbox";
 import { generateOtpCode } from "./controllers/generate_otp";
 import { addAccountProfile, getAccountProfile } from "./controllers/profile";
 import { searchPhone } from "./controllers/search_phone";
@@ -42,9 +46,6 @@ function setup_get_request() {
 
   // profile
   getAccountProfile(app);
-
-  // chat
-  getChatBoxInfo(app);
 }
 
 function setup_post_request() {
