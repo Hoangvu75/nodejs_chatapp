@@ -54,7 +54,8 @@ function setup_database_connection() {
 
 function setup_get_request() {
   app.get("/", function (_req: any, res: any) {
-    res.sendFile("./index.html", { root: __dirname });
+    // res.sendFile("./index.html", { root: __dirname });
+    res.send("hello world!");
   });
 
   // account
