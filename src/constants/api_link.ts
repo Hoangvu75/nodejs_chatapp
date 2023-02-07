@@ -13,3 +13,4 @@ export const LINK_SEARCH_PHONE = "/search-phone";
 export const LINK_GET_CHATBOX_LIST = "/get-chatbox-list";
 export const LINK_CREATE_CHATBOX = "/create-chatbox";
 export const LINK_ADD_CHAT = "/add-chat";
+export const LINK_GET_CHAT = "/get-chat";

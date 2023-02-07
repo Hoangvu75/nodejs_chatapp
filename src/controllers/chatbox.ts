@@ -26,7 +26,6 @@ export function createChatBox(app: any) {
 export function addChat(app: any) {
   app.post(API_LINK.LINK_ADD_CHAT, function (req: any, res: any) {
     var userArray = [req.body.user1, req.body.user2];
-    userArray.sort();
 
     Chatbox.findOne({ user: userArray }, (err: any, chatbox: any) => {
       var chat_input = {
@@ -76,6 +75,31 @@ export function getChatBoxList(app: any) {
       res.status(200).send({
         success: true,
         chatboxList,
+      });
+    });
+  });
+}
+
+export function getChat(app: any) {
+  app.post(API_LINK.LINK_GET_CHAT, function (req: any, res: any) {
+    var userArray = [req.body.user1, req.body.user2];
+
+    Chatbox.findOne({ user: userArray }, (err: any, chatbox: any) => {
+      if (err) {
+        return res.status(500).send({
+          success: false,
+          message: `${err}`,
+        });
+      }
+      if (!chatbox) {
+        return res.status(500).send({
+          success: false,
+          message: "Chat not found",
+        });
+      }
+      res.status(200).send({
+        success: true,
+        chatbox: chatbox,
       });
     });
   });

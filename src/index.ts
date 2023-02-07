@@ -9,6 +9,7 @@ import {
 import {
   addChat,
   createChatBox,
+  getChat,
   getChatBoxList,
 } from "./controllers/chatbox";
 import { generateOtpCode } from "./controllers/generate_otp";
@@ -66,6 +67,7 @@ function setup_post_request() {
   createChatBox(app);
   addChat(app);
   getChatBoxList(app);
+  getChat(app);
 }
 
 async function main() {
