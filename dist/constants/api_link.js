@@ -1,0 +1,15 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.LINK_GET_CHAT = exports.LINK_ADD_CHAT = exports.LINK_CREATE_CHATBOX = exports.LINK_GET_CHATBOX_LIST = exports.LINK_SEARCH_PHONE = exports.LINK_ACCOUNT_GET_PROFILE = exports.LINK_ACCOUNT_ADD_PROFILE = exports.LINK_ACCOUNT_DATA = exports.LINK_AUTHEN_GENERATE_OTP = exports.LINK_AUTHEN_LOGIN = exports.LINK_AUTHEN_REGISTER = exports.LINK = void 0;
+exports.LINK = "/";
+exports.LINK_AUTHEN_REGISTER = "/authen/register";
+exports.LINK_AUTHEN_LOGIN = "/authen/login";
+exports.LINK_AUTHEN_GENERATE_OTP = "/authen/generate-otp";
+exports.LINK_ACCOUNT_DATA = "/account/data";
+exports.LINK_ACCOUNT_ADD_PROFILE = "/account/add-profile";
+exports.LINK_ACCOUNT_GET_PROFILE = "/account/get-profile";
+exports.LINK_SEARCH_PHONE = "/search-phone";
+exports.LINK_GET_CHATBOX_LIST = "/get-chatbox-list";
+exports.LINK_CREATE_CHATBOX = "/create-chatbox";
+exports.LINK_ADD_CHAT = "/add-chat";
+exports.LINK_GET_CHAT = "/get-chat";
