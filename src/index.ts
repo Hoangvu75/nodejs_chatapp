@@ -15,33 +15,25 @@ import {
 import { generateOtpCode } from "./controllers/generate_otp";
 import { addAccountProfile, getAccountProfile } from "./controllers/profile";
 import { searchPhone } from "./controllers/search_phone";
-import 'http';
-import { createServer } from "http";
+import http from 'http';
+import { Server } from "socket.io";
 
 const app = express();
 app.use(express.json());
+const server = http.createServer(app);
+const io = new Server(server);
 
 const PORT = process.env.PORT || 3000;
 
-const http = createServer(app)
-const io = require('socket.io')(http);
+
 
 function initate_server() {
-  app.listen(PORT, () => {
-    console.log(`Listening to server: ${PORT}\nConnecting to the database...`);
+  io.on('connection', (socket) => {
+    console.log('a user connected');
   });
-
-  io.on('connection', (socket: any) => {
-    console.log('User connected');
   
-    socket.on('message', (message: any) => {
-      console.log('Message received: ', message);
-      io.emit('message', message);
-    });
-  
-    socket.on('disconnect', () => {
-      console.log('User disconnected');
-    });
+  server.listen(PORT, () => {
+    console.log(`Server listening to: ${PORT}\ `);
   });
 }
 
