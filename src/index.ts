@@ -29,8 +29,8 @@ const PORT = process.env.PORT || 3000;
 function initate_server() {
   io.on('connection', (socket) => {
     console.log(`a user connected ${Date().toLocaleString()}`);
-    socket.on('chat message', (msg) => {
-      console.log('message: ' + msg);
+    socket.on('chat request', (msg) => {
+      socket.broadcast.emit('chat response', msg);
     });
     socket.on('disconnect', () => {
       console.log('user disconnected');
@@ -55,7 +55,7 @@ function setup_database_connection() {
 function setup_get_request() {
   app.get("/", function (_req: any, res: any) {
     // res.sendFile("./index.html", { root: __dirname });
-    res.send("hello world!");
+    res.send(`Socket IO Start on Port: ${PORT}`);
   });
 
   // account
