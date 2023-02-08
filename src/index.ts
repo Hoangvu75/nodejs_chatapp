@@ -33,7 +33,7 @@ function initate_server() {
       socket.broadcast.emit('chat response', msg);
     });
     socket.on('call request', (msg) => {
-      socket.broadcast.emit('chat response', msg);
+      socket.broadcast.emit('call response', msg);
     });
     socket.on('disconnect', () => {
       console.log('user disconnected');
